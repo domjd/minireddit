@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import { Post } from './features/post/post';
 import './App.css';
+import './nav.css';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadPosts } from './features/post/postSlice';
@@ -20,7 +21,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>TEST</h1>
+      <nav>
+          <div className="nav-container">
+          <i className='bx bxl-reddit icon'></i>
+              <span className="logo">Mini<span className='logoHighlight'>Reddit</span></span>
+          </div>
+        </nav>    
       <header className="App-header">
         {isLoading ?  <div className="lds-ripple"><div></div><div></div></div> : <Post />} 
       </header>
