@@ -4,12 +4,14 @@ import { Counter } from './features/counter/Counter';
 import { Post } from './features/post/post';
 import './App.css';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { loadPosts } from './features/post/postSlice';
 
 function App() {
 
   const dispatch = useDispatch()
+  const { isLoading } = useSelector((state) => state.posts);
+
 
   useEffect(() => {
     dispatch(loadPosts())
@@ -18,8 +20,9 @@ function App() {
 
   return (
     <div className="App">
+      <h1>TEST</h1>
       <header className="App-header">
-        <Post />
+        {isLoading ?  <div className="lds-ripple"><div></div><div></div></div> : <Post />} 
       </header>
     </div>
   );

@@ -5,7 +5,6 @@ export const loadPosts = createAsyncThunk(
     async (subName, thunkAPI) => {
         const posts = await fetch('https://api.reddit.com/r/popular.json');
         const response = await posts.json();
-        console.log(response)
         return response.data.children;
     }
 );

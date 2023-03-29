@@ -2,6 +2,7 @@ import React from "react";
 import styles from './post.module.css'
 import { useSelector } from "react-redux";
 import { selectPosts} from "./postSlice";
+import { useEffect } from "react";
 
 export function Post() {
 
@@ -22,8 +23,8 @@ export function Post() {
     return(
         <div>
         {
-            posts.map((post) => (
-                <div className={styles.postItem}>
+            posts.map((post, index) => (
+                <div className={styles.postItem} key ={index}>
                 <p className={styles.subredditName}>{post.data.subreddit_name_prefixed}</p>
                 <h3 className={styles.postTitle}>{post.data.title}</h3>
                 {post.data.is_reddit_media_domain ? 
