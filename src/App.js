@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadPosts())
-  },[dispatch])
+   },[dispatch])
 
 
   return (
