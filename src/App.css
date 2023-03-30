@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+main {
+  max-width: 1200px;
+  width: 100%;
+
+  min-height: calc(100vh - 146px - 60px);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 140px auto 0 auto;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

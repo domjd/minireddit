@@ -1,23 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import { Post } from './features/post/post';
+import { PostList } from './features/PostList/postList';
 import './App.css';
 import './nav.css';
+import Root from './root';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadPosts } from './features/post/postSlice';
+import { loadPosts } from './features/PostList/postSlice';
+import { FullPost } from './features/FullPost/FullPost';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+
+const appRouter = createBrowserRouter(createRoutesFromElements(
+  <Route path='/' element={<Root/>}>
+    <Route index element={<PostList/>}/>
+    <Route path='r/:sub/comments/:id/:title' element={<FullPost/>}/>
+  </Route>
+));
 
 function App() {
-
-  const dispatch = useDispatch()
-  const { isLoading } = useSelector((state) => state.posts);
-
-
-  useEffect(() => {
-    dispatch(loadPosts())
-   },[dispatch])
-
 
   return (
     <div className="App">
@@ -27,9 +26,9 @@ function App() {
               <span className="logo">Mini<span className='logoHighlight'>Reddit</span></span>
           </div>
         </nav>    
-      <header className="App-header">
-        {isLoading ?  <div className="lds-ripple"><div></div><div></div></div> : <Post />} 
-      </header>
+      <main>
+         <RouterProvider router={appRouter}/>
+      </main>
     </div>
   );
 }

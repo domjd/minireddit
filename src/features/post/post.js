@@ -1,13 +1,11 @@
 import React from "react";
-import styles from './post.module.css'
+import styles from '../post.module.css'
 import { useSelector } from "react-redux";
-import { selectPosts} from "./postSlice";
+import { selectPosts} from "../PostList/postSlice";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-export function Post() {
-
-    const posts = useSelector(selectPosts)
-    console.log(posts)
+export function Post({post}) {
 
     const timeHelper = (timeA, timeB) => {
         const mins = ((timeB - timeA)) / 60
@@ -22,21 +20,18 @@ export function Post() {
 
     return(
         <div>
-        {
-            posts.map((post, index) => (
-                <div className={styles.postItem} key ={index}>
-                <p className={styles.subredditName}>{post.data.subreddit_name_prefixed}</p>
-                <h3 className={styles.postTitle}>{post.data.title}</h3>
-                {post.data.is_reddit_media_domain ? 
+            <div className={styles.postItem}>
+            <p className={styles.subredditName}>{post.data.subreddit_name_prefixed}</p>
+            <h3 className={styles.postTitle}>{post.data.title}</h3>
+            {post.data.post_hint === 'image' ? 
                 <img className={styles.postImage} src={post.data.url} alt='post'/> : ''}
-                <div className={styles.postInfo}>
-                    <p>Posted By <span className={styles.postAuthor}>{post.data.author}</span></p>
-                    <p>{timeHelper(post.data.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
-                    <p>{post.data.num_comments} comments</p>
-                </div>
+            <div className={styles.postInfo}>
+                <p>Posted By <span className={styles.postAuthor}>{post.data.author}</span></p>
+                <p>{timeHelper(post.data.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
+                <Link to={post.data.permalink}>{post.data.num_comments} comments</Link>
             </div>
-            ))
-        }
+        </div>
+      
         </div>
 
     );
