@@ -17,19 +17,25 @@ export function Post({post}) {
         }
     }
 
-
     return(
         <div>
             <div className={styles.postItem}>
-            <p className={styles.subredditName}>{post.data.subreddit_name_prefixed}</p>
-            <h3 className={styles.postTitle}>{post.data.title}</h3>
-            {post.data.post_hint === 'image' ? 
-                <img className={styles.postImage} src={post.data.url} alt='post'/> : ''}
-            <div className={styles.postInfo}>
-                <p>Posted By <span className={styles.postAuthor}>{post.data.author}</span></p>
-                <p>{timeHelper(post.data.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
-                <Link to={post.data.permalink}>{post.data.num_comments} comments</Link>
-            </div>
+                <div className={styles.postLeft}>
+                <i class='bx bxs-up-arrow-circle' ></i>
+                    <p>{post.ups}</p>
+                    <i class='bx bxs-down-arrow-circle' ></i>
+                </div>
+                <div className={styles.postRight}>
+                    <p className={styles.subredditName}>{post.subreddit_name_prefixed}</p>
+                    <h3 className={styles.postTitle}>{post.title}</h3>
+                    {post.post_hint === 'image' ? 
+                        <img className={styles.postImage} src={post.url} alt='post'/> : ''}
+                    <div className={styles.postInfo}>
+                        <p>Posted By <span className={styles.postAuthor}>{post.author}</span></p>
+                        <p>{timeHelper(post.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
+                        <Link to={post.permalink}>{post.num_comments} comments</Link>
+                    </div>
+                </div>
         </div>
       
         </div>

@@ -5,6 +5,7 @@ import { selectPostDetails, selectPostComments } from "./FullPostSlice";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { loadPost } from "./FullPostSlice";
+import { Comment } from "../Comment/comment";
 
 
 export function FullPost () {
@@ -29,16 +30,16 @@ export function FullPost () {
 
     const { isLoading } = useSelector((state) => state.post);
     const { isSuccess } = useSelector((state) => state.post);
-    console.log("FULL POST LOADING: ", isLoading)
     console.log("FULL POST SUCCESS: ", isSuccess)
 
     //const post = useSelector(selectPost)
     const postDetails = useSelector(selectPostDetails)
     const postComments = useSelector(selectPostComments)
 
+
     return (
         <div>
-             {isSuccess ? 
+             {!isLoading ? 
              <div>
              <h1>{postDetails.title}</h1>
              {postDetails.post_hint === 'image' ? 
@@ -46,13 +47,7 @@ export function FullPost () {
 
                 <div>
                     {postComments.map((comment, index) => {
-                        return (
-                            <div className={styles.comment} key={index}>
-                                <p>{comment.data.body}</p>
-                                <p><span className={styles.postAuthor}>{comment.data.author}</span></p>
-                                <p>{timeHelper(comment.data.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
-                            </div>
-                        )
+                         return <Comment comment={comment.data} key={index}/>
                     })}
                 </div>
              </div>

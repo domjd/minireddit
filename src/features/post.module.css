@@ -1,11 +1,13 @@
 .postItem{
+
+    display: flex;
     border-radius: 12px;
-    max-width: 800px;
     padding: 2rem;
     box-shadow: 2px 2px 10px lightgray;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 12px;
+
 }
 
 .postTitle {
@@ -33,6 +35,17 @@
     color: darkgray;
 }
 
+.postLeft {
+    display:flex;
+    flex-direction: column;
+    margin: 1rem;
+    color: lightgray;
+}
+
+.postRight{
+    width: 100%;
+}
+
 .postImage {
     border-radius: 12px;
     width: 600px;
@@ -41,10 +54,10 @@
 
 .comment {
     text-align: left;
+    border: 1px solid lightgray;
     border-radius: 12px;
-    max-width: 800px;
+    width: 100%;
     padding: 2rem;
-    box-shadow: 2px 2px 10px lightgray;
     display: flex;
     flex-direction: column;
     margin: 12px;
@@ -52,4 +65,27 @@
 
 button{
     width: 120px;
+}
+
+.subreddit {
+    display:flex;
+    flex-direction: row;
+}
+
+
+.subSideBar {
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 2px 2px 10px lightgray;
+    margin: 12px;
+    height: auto;
+}
+
+.subRedditItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid lightgray;
+    
 }

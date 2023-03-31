@@ -12,6 +12,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 const appRouter = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root/>}>
     <Route index element={<PostList/>}/>
+    <Route path='r/:sub' element={<PostList/>}/>
     <Route path='r/:sub/comments/:id/:title' element={<FullPost/>}/>
   </Route>
 ));
@@ -19,13 +20,7 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
 function App() {
 
   return (
-    <div className="App">
-      <nav>
-          <div className="nav-container">
-          <i className='bx bxl-reddit icon'></i>
-              <span className="logo">Mini<span className='logoHighlight'>Reddit</span></span>
-          </div>
-        </nav>    
+    <div className="App"> 
       <main>
          <RouterProvider router={appRouter}/>
       </main>

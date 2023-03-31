@@ -5,7 +5,6 @@ export const loadPost = createAsyncThunk(
     async ({sub, id, title}, thunkAPI) => {
         const post = await fetch(`https://api.reddit.com/r/${sub}/comments/${id}/${title}.json`);
         const response = await post.json();
-        console.log("FULL POST: ",response)
         return response;
     }
 );

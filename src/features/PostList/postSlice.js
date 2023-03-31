@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 export const loadPosts = createAsyncThunk(
     'posts/loadPosts',
     async (subName, thunkAPI) => {
-        const posts = await fetch('https://api.reddit.com/r/popular.json');
+        const posts = await fetch(`https://api.reddit.com/r/${subName}.json`);
         const response = await posts.json();
         return response.data.children;
     }
