@@ -4,7 +4,6 @@
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 2px 2px 10px lightgray;
-    display: flex;
     flex-direction: row;
     margin: 12px;
 
@@ -29,6 +28,11 @@
     margin-top: 16px;
 }
 
+.commentLink {
+    display: flex;
+    align-items: center;
+}
+
 .subredditName{
     text-align: left;
     font-size: 1rem;
@@ -48,15 +52,17 @@
 
 .postImage {
     border-radius: 12px;
-    width: 600px;
+    width: 100%;
+    height: auto;
     margin: auto;
+    max-width: 600px;
 }
 
 .comment {
     text-align: left;
     border: 1px solid lightgray;
     border-radius: 12px;
-    width: 100%;
+
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -69,17 +75,22 @@ button{
 
 .subreddit {
     display:flex;
-    flex-direction: row;
+    width: 100%;
+}
+
+.postFeed{
+    width: 100%;
 }
 
 
 .subSideBar {
     border-radius: 12px;
     padding: 2rem;
-    box-shadow: 2px 2px 10px lightgray;
+    box-shadow: 2px 2px 10px rgb(130, 129, 129);
     margin: 12px;
     height: auto;
 }
+
 
 .subRedditItem{
     display: flex;
@@ -88,4 +99,33 @@ button{
     padding: 1rem;
     border-bottom: 1px solid lightgray;
     
+}
+
+@media only screen and (max-width: 1040px){
+    .subSideBar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 750px){
+
+    .postItem{
+        min-height: auto;
+    
+    }
+
+    .postFeed{
+        flex-basis: 100%;
+    }
+
+    .postInfo {
+
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .commentLink {
+
+        justify-content: center;
+    }
 }

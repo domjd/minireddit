@@ -18,7 +18,6 @@ export function Post({post}) {
     }
 
     return(
-        <div>
             <div className={styles.postItem}>
                 <div className={styles.postLeft}>
                 <i class='bx bxs-up-arrow-circle' ></i>
@@ -33,12 +32,9 @@ export function Post({post}) {
                     <div className={styles.postInfo}>
                         <p>Posted By <span className={styles.postAuthor}>{post.author}</span></p>
                         <p>{timeHelper(post.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
-                        <Link to={post.permalink}>{post.num_comments} comments</Link>
+                        <Link className={styles.commentLink} to={post.permalink}>{post.num_comments} comments</Link>
                     </div>
                 </div>
         </div>
-      
-        </div>
-
     );
 }

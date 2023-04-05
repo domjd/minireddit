@@ -8,6 +8,8 @@ import { current } from "@reduxjs/toolkit";
 
 export function Comment({comment}) {
 
+   
+
     const timeHelper = (timeA, timeB) => {
         const mins = ((timeB - timeA)) / 60
         const hours  = mins / 60;
@@ -18,27 +20,38 @@ export function Comment({comment}) {
         }
     }
 
+    const commentFormatter = (comment) => {
+        const commentReplies = comment.data.children.replies;
+        return (
+            <div className={styles.comment}>
+            <p>{comment.body}</p>
+            <p><span className={styles.postAuthor}>{comment.author}</span></p>
+            <p>{timeHelper(comment.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
+        </div>
+        )
+    }
+
     const replyHelper = (comment) => {
         let currentComment = comment;
-        let currentCommmentReplies = [];
-        let index = 0;
+        let currentCommmentReplies = comment.replies;
+        let replyArray = [];
+        
         if(currentComment.replies){
             currentCommmentReplies = currentComment.replies.data.children;
+            let repliesCount = currentComment.replies.data.children.length;
+            
+            for(let i = 0; i < repliesCount; i++){
+                replyArray.push(commentFormatter(repliesCount[i]))
+
+               
+            }
+
+            
         }
 
-        const replies = currentCommmentReplies.map((item) => {
-            return (
-                <div className={styles.comment}>
-                    {item.data.body}
-                    <p><span className={styles.postAuthor}>{item.data.author}</span></p>
-                    <p>{timeHelper(item.data.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
-                </div>
-            )
-        })
+        console.log(replyArray)
 
-        console.log(replies)
-
-        return replies;
+        return replyArray;
     }
 
     return(
@@ -47,6 +60,7 @@ export function Comment({comment}) {
                 <p>{comment.body}</p>
                 <p><span className={styles.postAuthor}>{comment.author}</span></p>
                 <p>{timeHelper(comment.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
+                
             </div>
 
         </div>

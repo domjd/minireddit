@@ -22,9 +22,31 @@
     padding: 16px 32px;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBar input {
+    border-radius: 12px;
+    border: 1px solid lightgray;
+    padding: 6px;
+    margin-right: 8px;
+}
+
+.searchBar button {
+    font-size: 18px;
+    width: auto;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+   
 }
 
 nav {
@@ -58,4 +80,15 @@ nav {
     background-color: var(--primary);
 }
 
+@media only screen and (max-width: 550px){
 
+    .nav-container{
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav {
+        padding: 8px  
+    }
+}

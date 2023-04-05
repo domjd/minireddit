@@ -36,6 +36,8 @@ export function FullPost () {
     const postDetails = useSelector(selectPostDetails)
     const postComments = useSelector(selectPostComments)
 
+    console.log("COMEMNT: DATA: ", postComments)
+
 
     return (
         <div>
