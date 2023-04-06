@@ -55,11 +55,22 @@ export function Comment({comment}) {
     }
 
     return(
+        
         <div>
             <div className={styles.comment}>
+            <div className={styles.postLeft}>
+                <i class='bx bxs-up-arrow-circle' ></i>
+                    <p>{comment.ups}</p>
+                    <i class='bx bxs-down-arrow-circle' ></i>
+                </div>
+                <div className={styles.postRight}>
                 <p>{comment.body}</p>
-                <p><span className={styles.postAuthor}>{comment.author}</span></p>
-                <p>{timeHelper(comment.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
+                    <div className = {styles.postInfo}>
+                    <p><span className={styles.postAuthor}>{comment.author}</span></p>
+                    <p>{timeHelper(comment.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
+                    </div>
+                </div>
+
                 
             </div>
 

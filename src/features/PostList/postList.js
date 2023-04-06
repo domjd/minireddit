@@ -6,6 +6,7 @@ import { selectPosts, loadPosts } from "./postSlice";
 import styles from '../post.module.css'
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { subreddits } from "../../app/subs";
 
 export function PostList() {
 
@@ -13,8 +14,6 @@ export function PostList() {
     const dispatch = useDispatch()
     const { isLoading } = useSelector((state) => state.posts);
     console.log("POST LIST: ", isLoading)
-
-    const defaultSubs = ["/r/AskReddit","/r/announcements","/r/funny","/r/pics","/r/todayilearned","/r/science","/r/IAmA","/r/blog","/r/videos","/r/worldnews","/r/gaming","/r/movies","/r/Music","/r/aww","/r/news","/r/gifs","/r/askscience","/r/explainlikeimfive","/r/EarthPorn","/r/books","/r/television","/r/LifeProTips","/r/sports","/r/DIY","/r/Showerthoughts","/r/space","/r/Jokes","/r/tifu","/r/food","/r/Art","/r/InternetIsBeautiful","/r/mildlyinteresting","/r/GetMotivated","/r/history","/r/nottheonion","/r/gadgets","/r/Futurology","/r/listentothis","/r/philosophy","/r/nosleep","/r/creepy","/r/OldSchoolCool"]
 
 
     useEffect(() => {
@@ -42,9 +41,9 @@ export function PostList() {
             <div className={styles.subSideBar}>
                 <h3>Sub Reddits</h3>
                 
-                {defaultSubs.map((item) => {
+                {subreddits.map((item, index) => {
                     return (
-                        <div className={styles.subRedditItem}>
+                        <div className={styles.subRedditItem} key={index}>
                             <br/>
                         <Link to={item}>{item}</Link>
                         </div>

@@ -50,6 +50,10 @@
     width: 100%;
 }
 
+.postText {
+    text-align: left;
+}
+
 .postImage {
     border-radius: 12px;
     width: 100%;
@@ -65,9 +69,10 @@
 
     padding: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 12px;
 }
+
 
 button{
     width: 120px;
@@ -111,6 +116,7 @@ button{
 
     .postItem{
         min-height: auto;
+       
     
     }
 
@@ -122,10 +128,11 @@ button{
 
         flex-direction: column;
         justify-content: center;
+        text-align: left;
     }
 
     .commentLink {
 
-        justify-content: center;
+        justify-content: start;
     }
 }

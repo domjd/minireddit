@@ -27,7 +27,7 @@ const Root = () => {
 
                     <div className="searchBar">
                         <input placeholder="Search" onChange={(e) => setQuery(e.target.value)}/>
-                        <button className="SearchButton" onClick={displaySearchResults}><i class='bx bx-search'></i></button>
+                        <button className="SearchButton" onClick={displaySearchResults}><i className='bx bx-search'></i></button>
                     </div>
                     
                 </div>

@@ -8,6 +8,7 @@ import { loadPost } from "./FullPostSlice";
 import { Comment } from "../Comment/comment";
 
 
+
 export function FullPost () {
 
     const {id, sub, title} = useParams();
@@ -43,9 +44,25 @@ export function FullPost () {
         <div>
              {!isLoading ? 
              <div>
-             <h1>{postDetails.title}</h1>
-             {postDetails.post_hint === 'image' ? 
-                <img className={styles.postImage} src={postDetails.url} alt='post'/> : ''}
+                <div className={styles.postItem}>
+                    <div className={styles.postLeft}>
+                    <i class='bx bxs-up-arrow-circle' ></i>
+                        <p>{postDetails.ups}</p>
+                        <i class='bx bxs-down-arrow-circle' ></i>
+                    </div>
+                    <div className={styles.postRight}>
+                        <p className={styles.subredditName}>{postDetails.subreddit_name_prefixed}</p>
+                        <h1 className={styles.postTitle}>{postDetails.title}</h1>
+                        {postDetails.selftext ? <p className={styles.postText}>{postDetails.selftext}</p> : ""}
+                        {postDetails.post_hint === 'image' ? 
+                            <img className={styles.postImage} src={postDetails.url} alt='post'/> : ''}
+                        <div className={styles.postInfo}>
+                            <p>Posted By <span className={styles.postAuthor}>{postDetails.author}</span></p>
+                            <p>{timeHelper(postDetails.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
+                            <p><i class='bx bx-comment'></i> {postDetails.num_comments} comments</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div>
                     {postComments.map((comment, index) => {
