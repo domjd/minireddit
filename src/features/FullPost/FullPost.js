@@ -46,9 +46,9 @@ export function FullPost () {
              <div>
                 <div className={styles.postItem}>
                     <div className={styles.postLeft}>
-                    <i class='bx bxs-up-arrow-circle' ></i>
+                    <i className='bx bxs-up-arrow-circle' ></i>
                         <p>{postDetails.ups}</p>
-                        <i class='bx bxs-down-arrow-circle' ></i>
+                        <i className='bx bxs-down-arrow-circle' ></i>
                     </div>
                     <div className={styles.postRight}>
                         <p className={styles.subredditName}>{postDetails.subreddit_name_prefixed}</p>
@@ -59,7 +59,7 @@ export function FullPost () {
                         <div className={styles.postInfo}>
                             <p>Posted By <span className={styles.postAuthor}>{postDetails.author}</span></p>
                             <p>{timeHelper(postDetails.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
-                            <p><i class='bx bx-comment'></i> {postDetails.num_comments} comments</p>
+                            <p><i className='bx bx-comment'></i> {postDetails.num_comments} comments</p>
                         </div>
                     </div>
                 </div>
