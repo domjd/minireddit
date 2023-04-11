@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {Post} from '../post/post'
 import { useEffect } from "react";
 import { loadSearchResults, selectSearchResults } from "./searchSlice";
-import styles from '../post.module.css'
+import '../post.css'
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
@@ -26,25 +26,15 @@ export function SearchResults() {
     const posts = useSelector(selectSearchResults)
     console.log(posts)
 
-    const timeHelper = (timeA, timeB) => {
-        const mins = ((timeB - timeA)) / 60
-        const hours  = mins / 60;
-        if(hours > 1){
-            return `${Math.floor(hours)} hours ago`
-        } else {
-            return `${Math.floor(mins)} minutes ago`
-        }
-    }
-
 
     return(
-        <div className={styles.subreddit}>
-            <div className={styles.subSideBar}>
+        <div className="subreddit">
+            <div className="subSideBar">
                 <h3>Sub Reddits</h3>
                 
                 {defaultSubs.map((item) => {
                     return (
-                        <div className={styles.subRedditItem}>
+                        <div className="subRedditItem">
                             <br/>
                         <Link to={item}>{item}</Link>
                         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../post.module.css'
+import  '../post.css'
 import { useDispatch, useSelector } from "react-redux";
 import { selectPostDetails, selectPostComments } from "./FullPostSlice";
 import { useEffect } from "react";
@@ -44,20 +44,20 @@ export function FullPost () {
         <div>
              {!isLoading ? 
              <div>
-                <div className={styles.postItem}>
-                    <div className={styles.postLeft}>
+                <div className="postItem">
+                    <div className="postLeft">
                     <i className='bx bxs-up-arrow-circle' ></i>
                         <p>{postDetails.ups}</p>
                         <i className='bx bxs-down-arrow-circle' ></i>
                     </div>
-                    <div className={styles.postRight}>
-                        <p className={styles.subredditName}>{postDetails.subreddit_name_prefixed}</p>
-                        <h1 className={styles.postTitle}>{postDetails.title}</h1>
-                        {postDetails.selftext ? <p className={styles.postText}>{postDetails.selftext}</p> : ""}
+                    <div className="postRight">
+                        <p className="subredditName">{postDetails.subreddit_name_prefixed}</p>
+                        <h1 className="postTitle">{postDetails.title}</h1>
+                        {postDetails.selftext ? <p className="postText">{postDetails.selftext}</p> : ""}
                         {postDetails.post_hint === 'image' ? 
-                            <img className={styles.postImage} src={postDetails.url} alt='post'/> : ''}
-                        <div className={styles.postInfo}>
-                            <p>Posted By <span className={styles.postAuthor}>{postDetails.author}</span></p>
+                            <img className="postImage" src={postDetails.url} alt='post'/> : ''}
+                        <div className="postInfo">
+                            <p>Posted By <span className="postAuthor">{postDetails.author}</span></p>
                             <p>{timeHelper(postDetails.created_utc, Math.floor(new Date().getTime()/1000) )}</p>
                             <p><i className='bx bx-comment'></i> {postDetails.num_comments} comments</p>
                         </div>
