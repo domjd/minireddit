@@ -41,7 +41,7 @@ export function FullPost () {
 
 
     return (
-        <div>
+        <div className="postFeed">
              {!isLoading ? 
              <div>
                 <div className="postItem">
